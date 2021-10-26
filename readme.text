@@ -1,0 +1,20 @@
+install dependencies (express express-validator,mongoose)
+run server
+install dotenv for accessing the env file data
+require and initialize
+create api hello api get method and post metthod to with some rawdata
+install nodemon
+parse the body data when posting use middleware bodyparser
+npm install body-parser
+connect with mongodb
+
+follow mvc pattern (routes, models, controllers)
+and import evrything in respective files
+and use middlewares()
+create schema for user in models
+import in routes and write logic to save and error handellingand move it to the controller export and import in routes file and check api in postman
+make signin api with jwt and install and import
+get the neccessary data and loggedin 
+create a middleware for auth check using jwt
+create admin and user logins api 
+set admin front app
