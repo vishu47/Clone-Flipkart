@@ -16,5 +16,6 @@ import in routes and write logic to save and error handellingand move it to the 
 make signin api with jwt and install and import
 get the neccessary data and loggedin 
 create a middleware for auth check using jwt
-create admin and user logins api 
 set admin front app
+create admin and user login pages and home setup
+express validator on backend part -v5
