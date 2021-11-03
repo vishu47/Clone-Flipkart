@@ -9,7 +9,7 @@ exports.addcategory = (req, res) => {
     }
 
     if (req.body.parent_id) {
-        categoryObj.parent_id == req.body.parent_id;
+        categoryObj.parent_id = req.body.parent_id;
     }
 
     const cat = new Category(categoryObj);
@@ -22,14 +22,36 @@ exports.addcategory = (req, res) => {
     });
 }
 
+function filterCategory(categories, parent_id = null) {
+    const categoryList = [];
+    let category;
+
+    if (parent_id == null) {
+        category = categories.filter(cat => cat.parent_id == undefined);
+    } else {
+        category = categories.filter(cat => cat.parent_id == parent_id);
+    }
+    for (let cate of category) {
+        categoryList.push({
+            _id: cate._id,
+            name: cate.name,
+            slug: cate.name,
+            children: filterCategory(categories, cate._id)
+        })
+    }
+
+    return categoryList;
+}
+
 exports.getCategories = (req, res) => {
     Category.find({})
         .exec((error, categories) => {
             if (error) return res.status(500).jason({ error })
             if (categories) {
-                return res.status(200).json({
-                    categories
-                })
+
+                const categoryList = filterCategory(categories, )
+
+                return res.status(200).json({ categoryList })
             }
         })
 };

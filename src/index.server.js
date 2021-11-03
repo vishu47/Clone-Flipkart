@@ -14,17 +14,14 @@ env.config();
 // connect with mongodb
 
 mongoose.connect(
-        `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@ecomm.fipgu.mongodb.net/${process.env.MONGODB_NAME}?retryWrites=true&w=majority`, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            // useCreateIndex: true
-        }
-    ).then(() => {
-        console.log("Database connected!");
-    })
-    // .catch((err) => {
-    //     console.log(err.message);
-    // })
+    `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@ecomm.fipgu.mongodb.net/${process.env.MONGODB_NAME}?retryWrites=true&w=majority`, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        // useCreateIndex: true
+    }
+).then(() => {
+    console.log("Database connected!");
+})
 
 
 // middleware
