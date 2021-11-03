@@ -19,3 +19,5 @@ create a middleware for auth check using jwt
 set admin front app
 create admin and user login pages and home setup
 express validator on backend part -v5
+start backend part which is creating category and adding the category part api
+add slugify package
