@@ -6,6 +6,8 @@ const app = express();
 const authRoutes = require('./routes/auth')
 const adminRoutes = require('./routes/admin/auth')
 const categoryRoutes = require('./routes/category')
+const productsRoutes = require('./routes/productRoutes')
+const cartRoutes = require('./routes/cartRoutes')
 
 
 // access all the emv variable or constant
@@ -31,8 +33,13 @@ app.use(express.json()); //reomve bcz already in express.json
 app.use('/api', authRoutes);
 app.use('/api', adminRoutes);
 app.use('/api', categoryRoutes);
+app.use('/api', productsRoutes);
+app.use('/api', cartRoutes);
 
 
 app.listen(process.env.PORT, () => {
     console.log(`server is running on port ${process.env.PORT}`)
 });
+
+// (req, res) => {
+//     return res.status(200).json({ message: 'lkjhgfd' })
