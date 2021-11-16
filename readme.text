@@ -24,3 +24,4 @@ add slugify package
 add multer to upload multiple filea and shortid for getting unique ids for your upload file 
 create add to cart api for user and user can add multiple item in their cart and also can increase existing item quantity
 after file upload make it public use path library to make public in index serevr file;
+install redux for store, react-redux connect components with store access info from store , react-thunk to call apis async 
