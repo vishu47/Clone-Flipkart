@@ -3,7 +3,6 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Home from './containers/Home//index'
 import Login from './containers/Login/index'
 import Signup from './containers/Signup/index'
-import Layout from './components/layouts/index'
 import './App.css';
 
 function App() {
