@@ -36,7 +36,7 @@ export const isUserLoggedIn = () => {
         const token = localStorage.getItem('token');
         if(token){
             const user = JSON.parse(localStorage.getItem('user'));
-            return dispatch({
+            dispatch({
                 type : authConstants.LOGIN_SUCCESS,
                 payload: {
                     token,
@@ -51,4 +51,13 @@ export const isUserLoggedIn = () => {
             })
         }
     }
+}
+
+export const signout = () => {
+    return async dispatch => {
+        localStorage.clear();
+        dispatch({
+            type : authConstants.LOGOUT_REQUEST,
+        })
+    } 
 }

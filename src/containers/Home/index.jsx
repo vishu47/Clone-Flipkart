@@ -1,17 +1,17 @@
 import React from 'react'
 import Layout from '../../components/layouts/index'
 import {Container, Row,Col } from 'react-bootstrap'
+import './style.css'
 
 export default function Home() {
     return (
         <div>
             <Layout>
-                <Container>
+                <Container fluid>
                     <Row>
-                        <Col md={2} >Sidebar</Col>
-                        <Col md={10} >Sidebar</Col>
+                        <Col md={2} className="sidebar">Sidebar</Col>
+                        <Col md={10} style={{marginLeft:'auto'}}>Container</Col>
                     </Row>
-                <h1>Home</h1>
                 </Container>
             </Layout>
         </div>

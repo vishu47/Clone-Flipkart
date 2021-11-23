@@ -5,7 +5,7 @@ import { Form } from 'react-bootstrap'
 export default function Input(props) {
     return (
         <>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" >
                 <Form.Label>{props.label}</Form.Label>
                 <Form.Control
                     value = {props.value}

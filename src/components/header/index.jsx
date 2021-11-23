@@ -1,8 +1,39 @@
 import React from 'react'
 import {Container, Navbar,Nav } from 'react-bootstrap'
 import {NavLink, Link} from 'react-router-dom';
+import {useSelector,useDispatch} from 'react-redux';
+import {signout} from '../../action/auth.actions'
 
 export default function Header() {
+    const auth = useSelector(state => state.auth);
+    const dispatch = useDispatch();
+    const logout = () => {
+        dispatch(signout())
+    }
+
+    const NonLoggedInLinks = () =>{
+        return(
+            <Nav>
+                <li className="nav-item">
+                    <NavLink to="/login" className="nav-link"> Login</NavLink>
+                </li>
+                <li className="nav-item">
+                    <NavLink to="/signup" className="nav-link">Signup</NavLink>
+                </li>
+            </Nav>
+        )
+    }
+
+    const loggedInLinks = () => {
+        return(
+            <Nav>
+                <li className="nav-item">
+                    <span className="nav-link" onClick={logout}> Logout</span>
+                </li>
+            </Nav>
+        )
+    }
+
     return (
         <>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -21,14 +52,8 @@ export default function Header() {
                                 <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                             </NavDropdown> */}
                         </Nav>
-                        <Nav>
-                            <li className="nav-item">
-                                <NavLink to="/login" className="nav-link"> Login</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink to="/signup" className="nav-link">Signup</NavLink>
-                            </li>
-                        </Nav>
+                           {auth.authenticate  ? loggedInLinks() : NonLoggedInLinks()}
+                        
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
