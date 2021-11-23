@@ -2,10 +2,16 @@ import React from 'react'
 import Layout from '../../components/layouts/index'
 import { Container, Form, Button, Row, Col } from 'react-bootstrap'
 import Input from '../../UI/Input'
-
+import {Redirect} from 'react-router-dom';
+import {useSelector} from 'react-redux';
 
 
 export default function Signup() {
+    const auth = useSelector(state => state.auth)
+    if(auth.authenticate){
+        return <Redirect to={`/`} />
+    }
+
     return (
         <div>
             <Layout>

@@ -6,7 +6,7 @@ export default function Header() {
     return (
         <>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <Container>
+                <Container fluid> 
                     <Link to="/" className="navbar-brand">Admin Dashboard</Link>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">

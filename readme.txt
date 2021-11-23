@@ -26,4 +26,11 @@ create add to cart api for user and user can add multiple item in their cart and
 after file upload make it public use path library to make public in index serevr file;
 install redux for store, react-redux connect components with store access info from store , react-thunk to call apis async 
 create store,reducers and action folder| create store and inport it in app.js and wrap whole app with provider and pass the store as state 
-craete reducers for state management and inport to store file and use
+craete reducers for state management and inport to store file and use.
+form data to auth.action and import constant and return dispatch with type and payload and import to action.jsx 
+import action.jsx to auth.reducer and import constant for switch case  
+install axios and create a helper folder with axios instance and baseurl configuration
+install cors in backend to make api call from one server to another server to get api data and use it in server.index.js
+wright constant for cases like requesting, success and failed.
+make a hoc function for private routes to check whether user logged in or not.
+prevent to login page is usrer logged in in app.js for every page 

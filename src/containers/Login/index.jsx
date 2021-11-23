@@ -1,21 +1,32 @@
-import React from 'react'
+import {React,useState,useEffect} from 'react'
 import Layout from '../../components/layouts/index'
 import { Container, Form, Button, Row, Col } from 'react-bootstrap'
 import Input from '../../UI/Input'
 import {login} from '../../action/actions'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
+import {Redirect} from 'react-router-dom'
 
 export default function Login() {
+
+    const [email , setEmail] = useState('');
+    const [password , setPassword] = useState('');
+    const [error , setError] = useState('');
+    const auth = useSelector(state => state.auth)
+
 
     const dispatch = useDispatch();
 
     const userLogin = (e) => {
         e.preventDefault();
         const obj = {
-            email : 'vishnumaurya@gmail.com',
-            password: '123456'
+           email,password
         }
         dispatch(login(obj))
+    }
+
+
+    if(auth.authenticate){
+        return <Redirect to={`/`} />
     }
 
     return (
@@ -29,15 +40,13 @@ export default function Login() {
                                     label="Email address"
                                     type="email"
                                     placeholder="Enter email..."
-                                    value=""
-                                    onChange={() => { }}
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                                 <Input
                                     label="Password"
                                     type="password"
                                     placeholder="Enter password..."
-                                    value=""
-                                    onChange={() => { }}
+                                    onChange={(e) => setPassword(e.target.value)}
                                 />
                                 {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
                                     <Form.Check type="checkbox" label="Check me out" />
