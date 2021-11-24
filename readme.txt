@@ -33,4 +33,6 @@ install axios and create a helper folder with axios instance and baseurl configu
 install cors in backend to make api call from one server to another server to get api data and use it in server.index.js
 wright constant for cases like requesting, success and failed.
 make a hoc function for private routes to check whether user logged in or not.
-prevent to login page is usrer logged in in app.js for every page 
+prevent to login page is userr logged in app.js for every page 
+add logout api and then register api
+admin signin api integartion in admin app

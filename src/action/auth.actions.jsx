@@ -1,4 +1,4 @@
-import { authConstants } from './constants'
+import { authConstants,signupConstants } from './constants'
 import axios from '../helper/axios'
 
 export const login = (user) => {
@@ -23,6 +23,30 @@ export const login = (user) => {
         }else if(res.status === 400){
             dispatch({
                 type:authConstants.LOGIN_FAILED,
+                payload:{error: res.data.status}
+
+            })
+        }
+    }
+}
+
+export const signup = (user) => {
+    return async (dispatch) => {
+        dispatch({type:signupConstants.SIGNUP_REQUEST});
+        const res = await axios.post(`/admin/signup`, {
+            ...user
+        })
+        if(res.status === 200 || res.status === 201){
+            const { message } = res.data;
+            dispatch({
+                type : signupConstants.SIGNUP_SUCCESS,
+                payload: {
+                    message
+                }    
+            })
+        }else if(res.status === 400){
+            dispatch({
+                type:signupConstants.SIGNUP_FAILED,
                 payload:{error: res.data.status}
 
             })

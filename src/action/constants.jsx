@@ -4,3 +4,8 @@ export const authConstants = {
     LOGIN_FAILED : 'LOGIN_FAILED',
     LOGOUT_REQUEST : 'LOGOUT_REQUEST'
 }
+export const signupConstants = {
+    SIGNUP_REQUEST : 'SIGNUP_REQUEST',
+    SIGNUP_SUCCESS : 'SIGNUP_SUCCESS',
+    SIGNUP_FAILED : 'SIGNUP_FAILED',
+}

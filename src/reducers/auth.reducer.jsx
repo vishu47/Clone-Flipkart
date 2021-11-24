@@ -1,4 +1,4 @@
-import { authConstants } from '../action/constants'
+import { authConstants , signupConstants} from '../action/constants'
 
 const initialState = {
     token : null,
@@ -10,6 +10,9 @@ const initialState = {
         picture:'',
         _id:''
     },
+    error : null,
+    message : '',
+    loading : true,
     authenticate : false,
     authenticating: false
 };
@@ -39,7 +42,29 @@ const authReducer = (state = initialState, action) => {
             state = {
                 ...initialState
             }
-            break
+            break;
+        case signupConstants.SIGNUP_REQUEST:
+            state = {
+                ...state
+            }
+            break;
+
+        case signupConstants.SIGNUP_SUCCESS: 
+            state = {
+                ...state,
+                loading : false,
+                message : action.payload.message
+            } 
+            break;
+
+        case signupConstants.SIGNUP_FAILED: 
+            state = {
+                ...state,
+                loading : false,
+                error : action.payload.error
+            } 
+            break;
+
     }
 
     return state;
