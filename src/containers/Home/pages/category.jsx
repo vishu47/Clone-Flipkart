@@ -59,25 +59,23 @@ const Category = () => {
     return (
         <>
             <Layouts sidebar>
-                <Container>
-                    <Row>
-                        <Col md={12}>
-                            <div className="d-flex justify-content-lg-between mt-3">
-                                <h2>Categories</h2>
-                                <Button variant="primary btn-sm" size="sm" onClick={handleShow} style={{'height':'30px'}}>
-                                    Add Category
-                                </Button>
-                            </div>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col md={12}>
-                            <ul>
-                                {getAllCategories(allcategory.category)}
-                            </ul>
-                        </Col>
-                    </Row>
-                </Container>
+                <Row>
+                    <Col md={12}>
+                        <div className="d-flex justify-content-lg-between mt-3">
+                            <h2>Categories</h2>
+                            <Button variant="primary btn-sm" size="sm" onClick={handleShow} style={{'height':'30px'}}>
+                                Add Category
+                            </Button>
+                        </div>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={12}>
+                        <ul>
+                            {getAllCategories(allcategory.category)}
+                        </ul>
+                    </Col>
+                </Row>
             </Layouts>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

@@ -1,0 +1,6 @@
+.sidebar {
+    background: #e0dfdf;
+    box-shadow: 4px 0px 6px -5px black;
+    height: 100vh;
+    position: static;
+}

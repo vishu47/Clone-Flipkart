@@ -1,0 +1,19 @@
+.sidebar ul li {
+    /* margin: 10px 2px; */
+    padding: 10px 2px;
+}
+
+.sidebar ul li a {
+    margin-left: 5px;
+    padding: 5px 50px;
+    border-radius: 20px;
+    transition: ease-in-out 0.3s;
+}
+
+.sidebar ul li a.active {
+    color: white;
+    padding: 5px 50px;
+    background: #6d80cf;
+    border-radius: 20px;
+    transition: ease-in-out 0.3s;
+}

@@ -2,8 +2,20 @@ import {productConstants, categoryConstants} from '../action/constants';
 
 const init = {
     loading : false,
-    category : '',
+    category : [],
     error: null
+}
+
+const buildNewCategory = (categories, category) => {
+    const myCategory = [];
+
+    for(let cat of categories){
+        myCategory.push({
+            ...cat,
+            children : cat.children.length > 0 ? buildNewCategory(cat.children , category) : []
+        }) 
+    }
+    return myCategory;
 }
 
 const categoryReducer = (state = init, action) => {
@@ -38,8 +50,10 @@ const categoryReducer = (state = init, action) => {
         break;
         
         case categoryConstants.ADD_CATEGORY_SUCCESS:
+            console.log(buildNewCategory(state.categories,action.payload.category));
             state = {
                 ...state,
+
                 loading : false,
             }
         break;
