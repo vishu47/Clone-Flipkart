@@ -40,6 +40,7 @@ function filterCategory(categories, parent_id = null) {
             _id: cate._id,
             name: cate.name,
             slug: cate.name,
+            prenetId: cate.parent_id,
             children: filterCategory(categories, cate._id)
         })
     }
