@@ -6,20 +6,33 @@ const init = {
     error: null
 }
 
-const buildNewCategory = (categories, category) => {
+const buildNewCategory = (parentId, categorylist , newcategory) => {
     const myCategory = [];
-
-    for(let cat of categories){
-        myCategory.push({
-            ...cat,
-            children : cat.children.length > 0 ? buildNewCategory(cat.children , category) : []
-        }) 
+    for(let cate of categorylist){
+        if(cate._id == parentId){
+            console.log(cate._id == parentId);
+            myCategory.push({
+                ...cate,
+                children : cate.children && cate.children.length > 0 ? buildNewCategory(parentId , [...cate.children, {
+                    _id: newcategory._id,
+                    name: newcategory.name,
+                    slug: newcategory.name,
+                    prenetId: newcategory.parent_id,
+                    children: newcategory.chidren,
+                }] , newcategory) : []
+            }) 
+        }else{
+            myCategory.push({
+                ...cate,
+                children : cate.children && cate.children.length > 0 ? buildNewCategory(parentId, cate.children , newcategory) : []
+            }) 
+        }
     }
     return myCategory;
 }
 
 const categoryReducer = (state = init, action) => {
-    console.log(action);
+
     switch(action.type){
         case productConstants.PRODUCT_CATEGORY_REQUEST:
             state = {
@@ -50,10 +63,12 @@ const categoryReducer = (state = init, action) => {
         break;
         
         case categoryConstants.ADD_CATEGORY_SUCCESS:
-            console.log(buildNewCategory(state.categories,action.payload.category));
+            const category = action.payload.category;
+            const newadde =buildNewCategory(category.parent_id, state.category ,category) 
+            console.log(newadde);
             state = {
                 ...state,
-
+                category : newadde,
                 loading : false,
             }
         break;

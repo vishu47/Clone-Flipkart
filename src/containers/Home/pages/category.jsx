@@ -13,32 +13,31 @@ const Category = () => {
     const [image, setImage] = useState('');
 
     const dispatch = useDispatch();
-    const allcategory = useSelector(state => state.category) 
-    console.log(allcategory);
-    useEffect(() => {
-        dispatch(fetchProductCategory());
-    }, []);
+    // const allcategory = useSelector(state => state.category) 
+    const allcategory = useSelector(state  => {
+        return state.category;
+      });
+    
 
     const handleClose = () => {
         const form = new FormData()
         form.append('name',name)
         form.append('categoryImage',image)
         form.append('parent_id',category)
-        // const obj = {
-        //     name, category, image
-        // }
         dispatch(addCategory(form))
         setShow(false);
     }
+
+
     const handleShow = () => setShow(true);
 
     const getAllCategories = (categories) => {
         let mycategories = [];
-        for (let category of categories) {
+        for (let cat of categories) {
             mycategories.push(
                 <li>
-                    {category.name}
-                    {category.children.length > 0 ? (<ul>{getAllCategories(category.children)}</ul>) : null}
+                    {cat.name}
+                    {cat.children.length > 0 ? (<ul>{getAllCategories(cat.children)}</ul>) : null}
                 </li>
             )
         }
@@ -55,6 +54,9 @@ const Category = () => {
         return option;
     }
 
+    useEffect(() => {
+        dispatch(fetchProductCategory());
+    }, []);
 
     return (
         <>

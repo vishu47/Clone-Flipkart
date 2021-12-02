@@ -1,5 +1,5 @@
 import {React,useEffect} from 'react'
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import {BrowserRouter, Route, Switch,Redirect} from 'react-router-dom'
 import Home from './containers/Home//index'
 import Login from './containers/Login/index'
 import Signup from './containers/Signup/index'
@@ -19,6 +19,10 @@ function App() {
   useEffect(() => {
     if(!auth.authenticate){
         dispatch(isUserLoggedIn())
+    }
+    if(auth.token == null){
+      return <Redirect to={`/`} />
+      
     }
 }, []);
 
