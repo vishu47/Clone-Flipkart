@@ -1,23 +1,23 @@
-// import axios from '../helper/axios';
-// import {productConstants} from './constants'
+import axios from '../helper/axios';
+import {addProducts} from './constants'
 
-// export const fetchProductCategory = () => {
-//     return async (dispatch) => {
-//         dispatch({type:productConstants.PRODUCT_CATEGORY_REQUEST})
-//         const res = await axios.get('/category/getcategories');
-//         if(res.status === 200){
-//             const {categoryList} = res.data;
-//             dispatch({
-//                 type : productConstants.PRODUCT_CATEGORY_SUCCESS,
-//                 payload: {category : categoryList}
-//             })
-//         }else{
-//             dispatch({
-//                 type : productConstants.PRODUCT_CATEGORY_FAILED,
-//                 payload : {error: res.data.error}
-//             })
+export const addProduct = (form) => {
+    return async (dispatch) => {
+        dispatch({type:addProducts.ADD_PRODUCT_REQUEST})
+        const res = await axios.post(`/product/create`, form);
+        if(res.status === 200 || res.status === 201){
+            const {product} = res.data;
+            dispatch({
+                type : addProducts.ADD_PRODUCT_SUCCESS,
+                payload: {product : product}
+            })
+        }else{
+            dispatch({
+                type : addProducts.ADD_PRODUCT_FAILED,
+                payload : {error: res.data.error}
+            })
 
-//         }
+        }
         
-//     }
-// }
+    }
+}
