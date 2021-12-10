@@ -9,6 +9,7 @@ import CategoryPage from './containers/Home/pages/category'
 import './App.css';
 import PrivateRoute from './components/HOC/privateRoutes'
 import {isUserLoggedIn} from './action/auth.actions'
+import {fetchProductCategory} from './action/category.actions'
 import {useSelector, useDispatch} from 'react-redux';
 
 function App() {
@@ -17,6 +18,9 @@ function App() {
   const dispatch = useDispatch();
   
   useEffect(() => {
+    
+    dispatch(fetchProductCategory());
+
     if(!auth.authenticate){
         dispatch(isUserLoggedIn())
     }

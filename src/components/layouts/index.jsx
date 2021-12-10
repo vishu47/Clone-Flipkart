@@ -22,7 +22,7 @@ export default function Layouts(props) {
                                 <li><NavLink to='/orders'><FontAwesomeIcon icon = {faCodeBranch} />  Orders</NavLink> </li>
                             </ul>
                         </Col>
-                        <Col md={10}>{props.children}</Col>
+                        <Col className="maincontent" md={10}>{props.children}</Col>
                     </Row>
                     : props.children
                 }

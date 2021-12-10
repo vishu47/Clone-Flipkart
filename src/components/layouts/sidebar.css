@@ -1,3 +1,15 @@
+.sidebar {
+    background: #e0dfdf;
+    box-shadow: 4px 0px 6px -5px black;
+    height: 100vh;
+    position: static;
+    margin-top: 55px;
+}
+
+.maincontent {
+    margin-top: 55px;
+}
+
 .sidebar ul li {
     /* margin: 10px 2px; */
     padding: 10px 2px;

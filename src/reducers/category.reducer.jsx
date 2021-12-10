@@ -7,13 +7,25 @@ const init = {
 }
 
 const buildNewCategory = (parentId, categorylist , newcategory) => {
+
+    if(parentId == undefined){
+        return [
+            ...categorylist,
+            {
+                _id: newcategory._id,
+                name: newcategory.name,
+                slug: newcategory.name,
+                children: []
+            }
+        ]
+    }
+
     const myCategory = [];
     for(let cate of categorylist){
         if(cate._id == parentId){
-            console.log(cate._id == parentId);
             myCategory.push({
                 ...cate,
-                children : cate.children && cate.children.length > 0 ? buildNewCategory(parentId , [...cate.children, {
+                children : cate.children ? buildNewCategory(parentId , [...cate.children, {
                     _id: newcategory._id,
                     name: newcategory.name,
                     slug: newcategory.name,
@@ -24,7 +36,7 @@ const buildNewCategory = (parentId, categorylist , newcategory) => {
         }else{
             myCategory.push({
                 ...cate,
-                children : cate.children && cate.children.length > 0 ? buildNewCategory(parentId, cate.children , newcategory) : []
+                children : cate.children ? buildNewCategory(parentId, cate.children , newcategory) : []
             }) 
         }
     }

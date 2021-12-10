@@ -36,7 +36,7 @@ export default function Header() {
 
     return (
         <>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar collapseOnSelect fixed='top' expand="lg" bg="dark" variant="dark">
                 <Container fluid> 
                     <Link to="/" className="navbar-brand">Admin Dashboard</Link>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -53,7 +53,6 @@ export default function Header() {
                             </NavDropdown> */}
                         </Nav>
                            {auth.authenticate  ? loggedInLinks() : NonLoggedInLinks()}
-                        
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
