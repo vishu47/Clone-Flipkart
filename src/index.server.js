@@ -10,6 +10,7 @@ const adminRoutes = require('./routes/admin/auth')
 const categoryRoutes = require('./routes/category')
 const productsRoutes = require('./routes/productRoutes')
 const cartRoutes = require('./routes/cartRoutes')
+const initialDataRoutes = require('./routes/admin/initialDataRoutes')
 
 
 // access all the emv variable or constant
@@ -38,6 +39,7 @@ app.use('/api', adminRoutes);
 app.use('/api', categoryRoutes);
 app.use('/api', productsRoutes);
 app.use('/api', cartRoutes);
+app.use('/api', initialDataRoutes);
 
 
 app.listen(process.env.PORT, () => {

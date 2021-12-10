@@ -33,7 +33,7 @@ exports.productAdd = (req, res) => {
         if (error) return res.status(400).json({ error });
 
         if (productAdd) return res.status(200).json({
-            message: productAdd
+            product: productAdd
         })
     })
 }
