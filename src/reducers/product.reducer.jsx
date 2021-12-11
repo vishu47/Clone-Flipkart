@@ -1,4 +1,4 @@
-import {addProducts} from '../action/constants';
+import {getAllProductData} from '../action/constants';
 
 const init = {
     product : [],
@@ -8,16 +8,15 @@ const init = {
 }
 
 const productReducer = (state = init, action) => {
-
     switch (action.type) {
-        case addProducts.ADD_PRODUCT_REQUEST:
+        case getAllProductData.GET_ALL_PRODUCT_REQUEST:
             state = {
                 ...state,
                 loading :true,
                 message : 'product is adding...'
             }
             break;
-        case addProducts.ADD_PRODUCT_SUCCESS:
+        case getAllProductData.GET_ALL_PRODUCT_SUCCESS:
             state = {
                 ...state,
                 loading :false,
@@ -25,7 +24,7 @@ const productReducer = (state = init, action) => {
                 message : ''
             }
             break;
-        case addProducts.ADD_PRODUCT_FAILED:
+        case getAllProductData.GET_ALL_PRODUCT_FAILED:
             state = {
                 loading : false,
                 error : action.payload.error

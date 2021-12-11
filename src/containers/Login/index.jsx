@@ -32,7 +32,7 @@ export default function Login() {
     return (
         <div>
             <Layout>
-                <Container>
+                <Container style={{'marginTop':'60px'}}>
                     <Row style={{ marginTop: '50px' }}>
                         <Col md={{ span: 6, offset: 3 }}>
                             <Form onSubmit = {userLogin}>

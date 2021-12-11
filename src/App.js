@@ -10,6 +10,7 @@ import './App.css';
 import PrivateRoute from './components/HOC/privateRoutes'
 import {isUserLoggedIn} from './action/auth.actions'
 import {fetchProductCategory} from './action/category.actions'
+import {initialData} from './action/initialdata.action'
 import {useSelector, useDispatch} from 'react-redux';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
   useEffect(() => {
     
     dispatch(fetchProductCategory());
+    dispatch(initialData());
 
     if(!auth.authenticate){
         dispatch(isUserLoggedIn())

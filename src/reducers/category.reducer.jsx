@@ -44,7 +44,6 @@ const buildNewCategory = (parentId, categorylist , newcategory) => {
 }
 
 const categoryReducer = (state = init, action) => {
-
     switch(action.type){
         case productConstants.PRODUCT_CATEGORY_REQUEST:
             state = {

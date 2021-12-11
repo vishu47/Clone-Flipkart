@@ -19,6 +19,9 @@ export default function Products() {
 
     const dispatch = useDispatch();
     const allcategory = useSelector(state => state.category)
+    const products = useSelector(state => state.product)    // from reducers and then go to initail state 
+    console.log(products);
+
     const handleShow = () => setShow(true);
     const handleClose = () => {
 
@@ -69,7 +72,8 @@ export default function Products() {
                         <Table responsive hover variant="dark">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>No.</th>
+                                    <th>Product ID</th>
                                     <th>Name</th>
                                     <th>Category</th>
                                     <th>Price</th>
@@ -79,14 +83,28 @@ export default function Products() {
                                 </tr>
                             </thead>
                             <tbody>
+                                {
+                                    products.product.map((item,i) => 
+                                    <tr key={item._id}>
+                                        <td>{i+1}</td>
+                                        <td>{item._id}</td>
+                                        <td >{item.name}</td>
+                                        <td >{item.category == null ? 'NA' : item.category.name}</td>
+                                        <td>{item.price}</td>
+                                        <td>NA</td>
+                                        <td>{item.description}</td>
+                                        <td>NA</td>
+                                    </tr>
+                                    )
+                                }
                                 <tr>
-                                    <td>1</td>
+                                    {/* <td>1</td>
                                     <td>Vishnu</td>
                                     <td>VishnuMaurya</td>
                                     <td>7654</td>
                                     <td></td>
                                     <td>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</td>
-                                    <td>Nothing</td>
+                                    <td>Nothing</td> */}
                                 </tr>
                             </tbody>
                         </Table>
